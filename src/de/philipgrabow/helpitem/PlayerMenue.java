@@ -11,12 +11,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class PlayerMenue {
-	
+
 	public static void openInventory(Player p, String name) {
 		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 54, name);
 		loadItems(inv, name);
 		p.openInventory(inv);
 	}
+
 	public static void loadItems(org.bukkit.inventory.Inventory inv, String name) {
 		ItemStack wheat = weizen();
 		ItemStack dia = diamond();
@@ -25,16 +26,17 @@ public class PlayerMenue {
 		ItemStack gm1 = papiergm1(name);
 		ItemStack gm2 = papiergm2(name);
 		ItemStack gm3 = papiergm3(name);
-		
+
 		inv.setItem(0, dia);
 		inv.setItem(1, wheat);
 		inv.setItem(4, tnts);
 		inv.setItem(11, gm0);
-		inv.setItem(12, gm1);		
+		inv.setItem(12, gm1);
 		inv.setItem(13, gm2);
 		inv.setItem(14, gm3);
 
 	}
+
 	public static ItemStack weizen() {
 		ItemStack wheat = new ItemStack(Material.WHEAT);
 		ItemMeta metawheat = wheat.getItemMeta();
@@ -42,6 +44,7 @@ public class PlayerMenue {
 		wheat.setItemMeta(metawheat);
 		return wheat;
 	}
+
 	public static ItemStack diamond() {
 		ItemStack dia = new ItemStack(Material.DIAMOND);
 		ItemMeta meta = dia.getItemMeta();
@@ -49,6 +52,7 @@ public class PlayerMenue {
 		dia.setItemMeta(meta);
 		return dia;
 	}
+
 	public static ItemStack tntblock() {
 		ItemStack is = new ItemStack(Material.TNT);
 		ItemMeta meta = is.getItemMeta();
@@ -62,6 +66,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
+
 	public static ItemStack papiergm0(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -74,6 +79,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
+
 	public static ItemStack papiergm1(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -86,6 +92,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
+
 	public static ItemStack papiergm2(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -98,6 +105,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
+
 	public static ItemStack papiergm3(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
