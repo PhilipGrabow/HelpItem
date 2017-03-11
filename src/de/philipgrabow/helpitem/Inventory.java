@@ -48,9 +48,12 @@ public class Inventory {
 			ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 			SkullMeta meta = (SkullMeta) skull.getItemMeta();
 			meta.setOwner(Bukkit.getPlayer(p.getName()).getUniqueId().toString());
-			meta.setDisplayName(p.getName() + "`s Spieler Menü");
+			meta.setDisplayName(p.getName());
+			ArrayList<String> list = new ArrayList<String>();
+			list.add(ChatColor.YELLOW + p.getName() + "`s Spieler-Menü");
+			meta.setLore(list);
 			skull.setItemMeta(meta);
-			p.sendMessage(p.getName() + " : " + slot);
+//			p.sendMessage(p.getName() + " : " + slot);
 			inv.setItem(slot, skull);
 			slot++;
 		}

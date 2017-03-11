@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class PlayerMenue {
 	
 	public static void openInventory(Player p, String name) {
-		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 5, name);
+		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 54, name);
 		loadItems(inv);
 		p.openInventory(inv);
 	}

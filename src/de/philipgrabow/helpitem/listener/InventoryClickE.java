@@ -119,12 +119,12 @@ public class InventoryClickE implements Listener {
 					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
-				ItemMeta meta = e.getCurrentItem().getItemMeta();
 				if (e.getClick().isLeftClick()) {
 					ArrayList<String> list = new ArrayList<String>();
 					for(Player p : Bukkit.getOnlinePlayers()) {
 						list.add(p.getName());
 					}
+					ItemMeta meta = e.getCurrentItem().getItemMeta();
 					if(list.contains(meta.getDisplayName())) {
 						PlayerMenue.openInventory((Player)e.getWhoClicked(), meta.getDisplayName());
 					}
@@ -166,6 +166,7 @@ public class InventoryClickE implements Listener {
 		for(Player p : Bukkit.getOnlinePlayers()) {
 			list.add(p.getName());
 		}
+		/////////////////////////////////////////Player-Menü//////////////////////////////////////////////////////////////////////////////////
 		if(list.contains(invname)) {
 			if(e.getCurrentItem().getType() == Material.WHEAT) {
 				if (e.getClick().isLeftClick()) {
@@ -176,9 +177,19 @@ public class InventoryClickE implements Listener {
 							@SuppressWarnings("deprecation")
 							Player p2 = Bukkit.getPlayer(invname);
 							p2.setFoodLevel(20);
+							p2.sendMessage("§6Dein Hunger wurde gestillt!");
+							p.closeInventory();
+							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+						} else {
+							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+							return;
 						}
 					}
+				} else {
+					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
+			} else {
+				e.getWhoClicked().sendMessage("Nicht erkanntes Item gewählt!");
 			}
 			e.setCancelled(true);
 		}

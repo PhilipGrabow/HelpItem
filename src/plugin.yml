@@ -1,5 +1,5 @@
 name: HelpItem
-version: 0.1.3
+version: 0.1.4
 author: PhilipGrabow
 
 main: de.philipgrabow.helpitem.Main
@@ -16,13 +16,14 @@ permissions:
     description: All Access
     default: op
     children:
-      helpitem.create.self: true
-      helpitem.heal: op
-      helpitem.hunger: op
-      helpitem.kill: op
-      helpitem.openinventory: op
-      helpitem.mitglied: op
-      helpitem.owner: op
+      - helpitem.create.self: true
+      - helpitem.heal: op
+      - helpitem.hunger: op
+      - helpitem.kill: op
+      - helpitem.openinventory: op
+      - helpitem.mitglied: op
+      - helpitem.owner: op
+      - helpitem.playermenue.*: op
   helpitem.create.self:
     description: Du kannst dir das Item erzeugen!
     default: true
@@ -43,6 +44,14 @@ permissions:
     default: op
   helpitem.owner:
     description: Macht dich zum Owner
+    default: op
+  helpitem.playermenue.*:
+    description: All Access to Playermenue
+    default: op
+    children:
+      - helpitem.playermenue.hunger: op
+  helpitem.playermenue.hunger:
+    description: Berechtigt zum Spieler hunger stillen
     default: op
   
   
