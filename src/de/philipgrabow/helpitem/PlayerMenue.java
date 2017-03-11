@@ -14,12 +14,24 @@ public class PlayerMenue {
 		p.openInventory(inv);
 	}
 	public static void loadItems(org.bukkit.inventory.Inventory inv) {
+		ItemStack wheat = weizen();
+		ItemStack dia = diamond();
+		
+		inv.setItem(0, dia);
+		inv.setItem(1, wheat);
+	}
+	public static ItemStack weizen() {
 		ItemStack wheat = new ItemStack(Material.WHEAT);
 		ItemMeta metawheat = wheat.getItemMeta();
 		metawheat.setDisplayName("Hunger stillen!");
 		wheat.setItemMeta(metawheat);
-		
-		inv.setItem(0, wheat);
+		return wheat;
 	}
-
+	public static ItemStack diamond() {
+		ItemStack dia = new ItemStack(Material.DIAMOND);
+		ItemMeta meta = dia.getItemMeta();
+		meta.setDisplayName("Heilt den Spieler!");
+		dia.setItemMeta(meta);
+		return dia;
+	}
 }

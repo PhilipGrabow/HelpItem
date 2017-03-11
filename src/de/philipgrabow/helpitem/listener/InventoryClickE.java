@@ -121,17 +121,18 @@ public class InventoryClickE implements Listener {
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
 				if (e.getClick().isLeftClick()) {
 					ArrayList<String> list = new ArrayList<String>();
-					for(Player p : Bukkit.getOnlinePlayers()) {
+					for (Player p : Bukkit.getOnlinePlayers()) {
 						list.add(p.getName());
 					}
 					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if(list.contains(meta.getDisplayName())) {
-						PlayerMenue.openInventory((Player)e.getWhoClicked(), meta.getDisplayName());
+					if (list.contains(meta.getDisplayName())) {
+						PlayerMenue.openInventory((Player) e.getWhoClicked(), meta.getDisplayName());
 					}
 					if (meta.getDisplayName().contains("Dich zum Mitglied machen!")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.mitglied")) {
-							p.getServer().dispatchCommand(p.getServer().getConsoleSender(), "pex user " + p.getName() + " group set Mitglieder");
+							p.getServer().dispatchCommand(p.getServer().getConsoleSender(),
+									"pex user " + p.getName() + " group set Mitglieder");
 							p.sendMessage("§6Du bist jetzt Mitglied!");
 							p.setOp(false);
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
@@ -144,7 +145,8 @@ public class InventoryClickE implements Listener {
 					if (meta.getDisplayName().contains("Dich zum Owner machen!")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.owner")) {
-							p.getServer().dispatchCommand(p.getServer().getConsoleSender(), "pex user " + p.getName() + " group set Owner");
+							p.getServer().dispatchCommand(p.getServer().getConsoleSender(),
+									"pex user " + p.getName() + " group set Owner");
 							p.sendMessage("§6Du bist jetzt Owner!");
 							p.setOp(true);
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
@@ -163,21 +165,41 @@ public class InventoryClickE implements Listener {
 			e.setCancelled(true);
 		}
 		ArrayList<String> list = new ArrayList<String>();
-		for(Player p : Bukkit.getOnlinePlayers()) {
+		for (Player p : Bukkit.getOnlinePlayers()) {
 			list.add(p.getName());
 		}
-		/////////////////////////////////////////Player-Menü//////////////////////////////////////////////////////////////////////////////////
-		if(list.contains(invname)) {
-			if(e.getCurrentItem().getType() == Material.WHEAT) {
+		///////////////////////////////////////// Player-Menü//////////////////////////////////////////////////////////////////////////////////
+		if (list.contains(invname)) {
+			if (e.getCurrentItem().getType() == Material.WHEAT) {
 				if (e.getClick().isLeftClick()) {
 					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if(meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
+					if (meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
 						Player p = (Player) e.getWhoClicked();
-						if(p.hasPermission("helpitem.playermenue.hunger")) {
+						if (p.hasPermission("helpitem.playermenue.hunger")) {
 							@SuppressWarnings("deprecation")
 							Player p2 = Bukkit.getPlayer(invname);
 							p2.setFoodLevel(20);
 							p2.sendMessage("§6Dein Hunger wurde gestillt!");
+							p.closeInventory();
+							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+						} else {
+							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+							return;
+						}
+					}
+				} else {
+					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+				}
+			} else if (e.getCurrentItem().getType() == Material.DIAMOND) {
+				if (e.getClick().isLeftClick()) {
+					ItemMeta meta = e.getCurrentItem().getItemMeta();
+					if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler")) {
+						Player p = (Player) e.getWhoClicked();
+						if (p.hasPermission("helpitem.playermenue.heal")) {
+							@SuppressWarnings("deprecation")
+							Player p2 = Bukkit.getPlayer(invname);
+							p2.setHealth(20.0);
+							p2.sendMessage("§6Du wurdest geheilt!");
 							p.closeInventory();
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 						} else {
