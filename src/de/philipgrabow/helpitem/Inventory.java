@@ -31,69 +31,19 @@ public class Inventory {
 
 	@SuppressWarnings("deprecation")
 	public static void loadItems(org.bukkit.inventory.Inventory inv) {
-		ItemStack goldenapple = new ItemStack(Material.GOLDEN_APPLE);
-		ItemStack goldencarrot = new ItemStack(Material.GOLDEN_CARROT);
-		ItemStack tnt = new ItemStack(Material.TNT);
-		ItemStack dayclock = new ItemStack(Material.WATCH);
-		ItemStack nightclock = new ItemStack(Material.WATCH);
-		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
-		ItemStack paper = new ItemStack(Material.PAPER);
-		ItemStack steve = new ItemStack(Material.SKULL_ITEM);
-		ItemStack steve2 = new ItemStack(Material.SKULL_ITEM);
-		book = HelpBook.loadBook(book);
-		ItemMeta metaday = dayclock.getItemMeta();
-		ItemMeta metanight = nightclock.getItemMeta();
-		ItemMeta metaapple = goldenapple.getItemMeta();
-		ItemMeta metacarrot = goldencarrot.getItemMeta();
-		ItemMeta metatnt = tnt.getItemMeta();
-		ItemMeta metapaper = paper.getItemMeta();
-		ItemMeta metakopf = steve.getItemMeta();
-		ItemMeta metakopf2 = steve2.getItemMeta();
-		ArrayList<String> descriptionday = new ArrayList<String>();
-		ArrayList<String> descriptionnight = new ArrayList<String>();
-		ArrayList<String> descriptionpaper = new ArrayList<String>();
-		ArrayList<String> descriptionkopf = new ArrayList<String>();
-		ArrayList<String> descriptionkopf2 = new ArrayList<String>();
-		descriptionday.add("Setzt die");
-		descriptionday.add("Zeit auf Tag!");
-		descriptionnight.add("Setzt die");
-		descriptionnight.add("Zeit auf Nacht!");
-		descriptionpaper.add("Du benutzt das Plugin 'HelpItem'!");
-		descriptionpaper.add("Autor: Philip_Grabow");
-		descriptionpaper.add("Du kannst nur die vorhandenen Item´s nutzen mit Linksklick!");
-		descriptionpaper.add("Manche Items benötigen bestimmte Rechte!");
-		descriptionpaper.add("Viel Spass beim Erforschen!");
-		descriptionkopf.add("Setzt den Spieler auf Rang: MITGLIED!");
-		descriptionkopf.add("Deoppt den Spieler!");
-		descriptionkopf.add("NUR FÜR ADMINS!");
-		descriptionkopf2.add("Setzt den Spieler auf Rang: Owner!");
-		descriptionkopf2.add("Oppt den Spieler!");
-		descriptionkopf2.add("NUR FÜR ADMINS!");
-		metaday.setLore(descriptionday);
-		metanight.setLore(descriptionnight);
-		metapaper.setLore(descriptionpaper);
-		metakopf.setLore(descriptionkopf);
-		metakopf2.setLore(descriptionkopf2);
-		metaday.setDisplayName(ChatColor.YELLOW + "Zeit: Tag!");
-		metanight.setDisplayName(ChatColor.BLUE + "Zeit: Nacht!");
-		metaapple.setDisplayName(ChatColor.RED + "Heilen!");
-		metacarrot.setDisplayName(ChatColor.GOLD + "Deinen Hunger stillen!");
-		metatnt.setDisplayName(ChatColor.RED + "Sterben!");
-		metapaper.setDisplayName(ChatColor.GREEN + "Über dieses Plugin!");
-		metakopf.setDisplayName(ChatColor.GREEN + "Dich zum Mitglied machen!");
-		metakopf2.setDisplayName(ChatColor.RED + "Dich zum Owner machen!");
-		metapaper.addEnchant(Enchantment.DURABILITY, 1, true);
-		metapaper.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-		dayclock.setItemMeta(metaday);
-		nightclock.setItemMeta(metanight);
-		goldenapple.setItemMeta(metaapple);
-		goldencarrot.setItemMeta(metacarrot);
-		tnt.setItemMeta(metatnt);
-		paper.setItemMeta(metapaper);
-		steve.setItemMeta(metakopf);
-		steve2.setItemMeta(metakopf2);
-		//Player-MENÜ ///////////////////////////////////////////////////////////////////////////////////
-		int slot = 27;
+		//ItemStacks laden
+		ItemStack goldenapple = Inventory.GoldenApple();
+		ItemStack goldencarrot = Inventory.GoldenCarrot();
+		ItemStack tnt = Inventory.TnT();
+		ItemStack dayclock = Inventory.DC();
+		ItemStack nightclock = Inventory.NC();
+		ItemStack book = Inventory.hbook();
+		ItemStack paper = Inventory.infoblatt();
+		ItemStack steve = Inventory.skull1();
+		ItemStack steve2 = Inventory.skull2();
+		// Player-MENÜ
+		// ///////////////////////////////////////////////////////////////////////////////////
+		int slot = 27;//Anfangsslot
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 			SkullMeta meta = (SkullMeta) skull.getItemMeta();
@@ -114,5 +64,102 @@ public class Inventory {
 		inv.setItem(53, paper);
 		inv.setItem(45, steve);
 		inv.setItem(46, steve2);
+	}
+
+	public static ItemStack GoldenApple() {
+		ItemStack goldenapple = new ItemStack(Material.GOLDEN_APPLE);
+		ItemMeta metaapple = goldenapple.getItemMeta();
+		metaapple.setDisplayName(ChatColor.RED + "Heilen!");
+		goldenapple.setItemMeta(metaapple);
+		return goldenapple;
+	}
+
+	public static ItemStack GoldenCarrot() {
+		ItemStack goldencarrot = new ItemStack(Material.GOLDEN_CARROT);
+		ItemMeta metacarrot = goldencarrot.getItemMeta();
+		metacarrot.setDisplayName(ChatColor.GOLD + "Deinen Hunger stillen!");
+		goldencarrot.setItemMeta(metacarrot);
+		return goldencarrot;
+	}
+
+	public static ItemStack TnT() {
+		ItemStack tnt = new ItemStack(Material.TNT);
+		ItemMeta metatnt = tnt.getItemMeta();
+		metatnt.setDisplayName(ChatColor.RED + "Sterben!");
+		tnt.setItemMeta(metatnt);
+		return tnt;
+	}
+
+	public static ItemStack DC() {
+		ItemStack dayclock = new ItemStack(Material.WATCH);
+		ItemMeta metaday = dayclock.getItemMeta();
+		ArrayList<String> descriptionday = new ArrayList<String>();
+		descriptionday.add("Setzt die");
+		descriptionday.add("Zeit auf Tag!");
+		metaday.setLore(descriptionday);
+		metaday.setDisplayName(ChatColor.YELLOW + "Zeit: Tag!");
+		dayclock.setItemMeta(metaday);
+		return dayclock;
+	}
+
+	public static ItemStack NC() {
+		ItemStack nightclock = new ItemStack(Material.WATCH);
+		ItemMeta metanight = nightclock.getItemMeta();
+		ArrayList<String> descriptionnight = new ArrayList<String>();
+		descriptionnight.add("Setzt die");
+		descriptionnight.add("Zeit auf Nacht!");
+		metanight.setLore(descriptionnight);
+		metanight.setDisplayName(ChatColor.BLUE + "Zeit: Nacht!");
+		nightclock.setItemMeta(metanight);
+		return nightclock;
+	}
+
+	public static ItemStack hbook() {
+		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
+		book = HelpBook.loadBook(book);
+		return book;
+	}
+
+	public static ItemStack infoblatt() {
+		ItemStack paper = new ItemStack(Material.PAPER);
+		ItemMeta metapaper = paper.getItemMeta();
+		ArrayList<String> descriptionpaper = new ArrayList<String>();
+		descriptionpaper.add("Du benutzt das Plugin 'HelpItem'!");
+		descriptionpaper.add("Autor: Philip_Grabow");
+		descriptionpaper.add("Du kannst nur die vorhandenen Item´s nutzen mit Linksklick!");
+		descriptionpaper.add("Manche Items benötigen bestimmte Rechte!");
+		descriptionpaper.add("Viel Spass beim Erforschen!");
+		metapaper.setLore(descriptionpaper);
+		metapaper.setDisplayName(ChatColor.GREEN + "Über dieses Plugin!");
+		metapaper.addEnchant(Enchantment.DURABILITY, 1, true);
+		metapaper.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		paper.setItemMeta(metapaper);
+		return paper;
+	}
+
+	public static ItemStack skull1() {
+		ItemStack steve = new ItemStack(Material.SKULL_ITEM);
+		ItemMeta metakopf = steve.getItemMeta();
+		ArrayList<String> descriptionkopf = new ArrayList<String>();
+		descriptionkopf.add("Setzt den Spieler auf Rang: MITGLIED!");
+		descriptionkopf.add("Deoppt den Spieler!");
+		descriptionkopf.add("NUR FÜR ADMINS!");
+		metakopf.setLore(descriptionkopf);
+		metakopf.setDisplayName(ChatColor.GREEN + "Dich zum Mitglied machen!");
+		steve.setItemMeta(metakopf);
+		return steve;
+	}
+
+	public static ItemStack skull2() {
+		ItemStack steve2 = new ItemStack(Material.SKULL_ITEM);
+		ItemMeta metakopf2 = steve2.getItemMeta();
+		ArrayList<String> descriptionkopf2 = new ArrayList<String>();
+		descriptionkopf2.add("Setzt den Spieler auf Rang: Owner!");
+		descriptionkopf2.add("Oppt den Spieler!");
+		descriptionkopf2.add("NUR FÜR ADMINS!");
+		metakopf2.setLore(descriptionkopf2);
+		metakopf2.setDisplayName(ChatColor.RED + "Dich zum Owner machen!");
+		steve2.setItemMeta(metakopf2);
+		return steve2;
 	}
 }
