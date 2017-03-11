@@ -1,5 +1,8 @@
 package de.philipgrabow.helpitem.listener;
 
+import java.util.ArrayList;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -12,6 +15,7 @@ import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import de.philipgrabow.helpitem.HelpBook;
+import de.philipgrabow.helpitem.PlayerMenue;
 
 public class InventoryClickE implements Listener {
 
@@ -117,6 +121,13 @@ public class InventoryClickE implements Listener {
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
 				if (e.getClick().isLeftClick()) {
+					ArrayList<String> list = new ArrayList<String>();
+					for(Player p : Bukkit.getOnlinePlayers()) {
+						list.add(p.getName());
+					}
+					if(list.contains(meta.getDisplayName())) {
+						PlayerMenue.openInventory((Player)e.getWhoClicked(), meta.getDisplayName());
+					}
 					if (meta.getDisplayName().contains("Dich zum Mitglied machen!")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.mitglied")) {
@@ -150,7 +161,26 @@ public class InventoryClickE implements Listener {
 				e.getWhoClicked().sendMessage("Nicht erkanntes Item gewählt!");
 			}
 			e.setCancelled(true);
-			return;
+		}
+		ArrayList<String> list = new ArrayList<String>();
+		for(Player p : Bukkit.getOnlinePlayers()) {
+			list.add(p.getName());
+		}
+		if(list.contains(invname)) {
+			if(e.getCurrentItem().getType() == Material.WHEAT) {
+				if (e.getClick().isLeftClick()) {
+					ItemMeta meta = e.getCurrentItem().getItemMeta();
+					if(meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
+						Player p = (Player) e.getWhoClicked();
+						if(p.hasPermission("helpitem.playermenue.hunger")) {
+							@SuppressWarnings("deprecation")
+							Player p2 = Bukkit.getPlayer(invname);
+							p2.setFoodLevel(20);
+						}
+					}
+				}
+			}
+			e.setCancelled(true);
 		}
 		return;
 	}
