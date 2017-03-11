@@ -3,6 +3,7 @@ package de.philipgrabow.helpitem.listener;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -160,7 +161,7 @@ public class InventoryClickE implements Listener {
 					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
 			} else {
-				e.getWhoClicked().sendMessage("Nicht erkanntes Item gewählt!");
+				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
 			}
 			e.setCancelled(true);
 		}
@@ -211,7 +212,7 @@ public class InventoryClickE implements Listener {
 					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
 			} else {
-				e.getWhoClicked().sendMessage("Nicht erkanntes Item gewählt!");
+				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
 			}
 			e.setCancelled(true);
 		}
