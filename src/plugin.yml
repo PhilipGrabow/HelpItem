@@ -1,0 +1,48 @@
+name: HelpItem
+version: 0.1.3
+author: PhilipGrabow
+
+main: de.philipgrabow.helpitem.Main
+
+commands:
+  helpitem:
+    description: Erzeugt das Item zur Hilfe
+    aliases: [helpitem, hi]
+    permission: helpitem.create
+    usage: /<command>
+ 
+permissions:
+  helpitem.*:
+    description: All Access
+    default: op
+    children:
+      helpitem.create.self: true
+      helpitem.heal: op
+      helpitem.hunger: op
+      helpitem.kill: op
+      helpitem.openinventory: op
+      helpitem.mitglied: op
+      helpitem.owner: op
+  helpitem.create.self:
+    description: Du kannst dir das Item erzeugen!
+    default: true
+  helpitem.heal:
+    description: Berechtigung zum Heilen
+    default: op
+  helpitem.hunger:
+    description: Berechtigung zum Hunger stillen
+    default: op
+  helpitem.kill:
+    description: Berechtigung zum Killen
+    default: op
+  helpitem.openinventory:
+    description: Berechtigung zum Inventar
+    default: op
+  helpitem.mitglied:
+    description: Macht dich zum Mitglied
+    default: op
+  helpitem.owner:
+    description: Macht dich zum Owner
+    default: op
+  
+  
