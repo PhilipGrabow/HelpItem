@@ -8,7 +8,7 @@ commands:
   helpitem:
     description: Erzeugt das Item zur Hilfe
     aliases: [helpitem, hi]
-    permission: helpitem.create
+    permission: helpitem.create.self
     usage: /<command>
  
 permissions:

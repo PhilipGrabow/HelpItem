@@ -40,7 +40,7 @@ public class PlayerMenue {
 		inv.setItem(14, gm3);
 
 	}
-
+	//Hunger stillen
 	public static ItemStack weizen() {
 		ItemStack wheat = new ItemStack(Material.WHEAT);
 		ItemMeta metawheat = wheat.getItemMeta();
@@ -48,7 +48,7 @@ public class PlayerMenue {
 		wheat.setItemMeta(metawheat);
 		return wheat;
 	}
-
+	//Heilen
 	public static ItemStack diamond() {
 		ItemStack dia = new ItemStack(Material.DIAMOND);
 		ItemMeta meta = dia.getItemMeta();
@@ -56,7 +56,7 @@ public class PlayerMenue {
 		dia.setItemMeta(meta);
 		return dia;
 	}
-
+	//INV leeren
 	public static ItemStack tntblock() {
 		ItemStack is = new ItemStack(Material.TNT);
 		ItemMeta meta = is.getItemMeta();
@@ -70,7 +70,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
-
+	//GM 0
 	public static ItemStack papiergm0(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -88,7 +88,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
-
+	//GM 1
 	public static ItemStack papiergm1(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -105,7 +105,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
-
+	//GM 2
 	public static ItemStack papiergm2(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();
@@ -122,7 +122,7 @@ public class PlayerMenue {
 		is.setItemMeta(meta);
 		return is;
 	}
-
+	//GM 3
 	public static ItemStack papiergm3(String name) {
 		ItemStack is = new ItemStack(Material.PAPER);
 		ItemMeta meta = is.getItemMeta();

@@ -202,7 +202,7 @@ public class InventoryClickE implements Listener {
 			} else if (e.getCurrentItem().getType() == Material.DIAMOND) {
 				if (e.getClick().isLeftClick()) {
 					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler")) {
+					if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler!")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.heal")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -223,6 +223,30 @@ public class InventoryClickE implements Listener {
 				} else {
 					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
+			} else if (e.getCurrentItem().getType() == Material.TNT) {
+				if(e.getClick().isLeftClick()) {
+					ItemMeta meta = e.getCurrentItem().getItemMeta();
+					if(meta.getDisplayName().equalsIgnoreCase("Leert das Inventar von diesem Spieler!")) {
+						Player p = (Player) e.getWhoClicked();
+						if(p.hasPermission("helpitem.playermenue.invclear")) {
+							File file = new File("plugins/HelpItem", "UUID.yml");
+							FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+							if (cfg.contains(invname)) {
+								String uid = cfg.getString(invname + ".UUID");
+								Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+								p2.getInventory().clear();
+								p2.sendMessage("§6Dein Inventar wurde geleert!");
+								p.closeInventory();
+								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							}
+						} else {
+							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+							return;
+						}
+					}
+				} else {
+					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+				}
 			} else {
 				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
 			}
@@ -230,5 +254,4 @@ public class InventoryClickE implements Listener {
 		}
 		return;
 	}
-
 }
