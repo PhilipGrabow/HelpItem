@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -230,11 +231,11 @@ public class InventoryClickE implements Listener {
 					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
-				if(e.getClick().isLeftClick()) {
+				if (e.getClick().isLeftClick()) {
 					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if(meta.getDisplayName().equalsIgnoreCase("§cLeert das Inventar von diesem Spieler!")) {
+					if (meta.getDisplayName().contains("Leert das Inventar von diesem Spieler!")) {
 						Player p = (Player) e.getWhoClicked();
-						if(p.hasPermission("helpitem.playermenue.invclear")) {
+						if (p.hasPermission("helpitem.playermenue.invclear")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
 							FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 							if (cfg.contains(invname)) {
@@ -251,6 +252,91 @@ public class InventoryClickE implements Listener {
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
 							return;
+						}
+					}
+				} else if (e.getCurrentItem().getType() == Material.PAPER) {
+					if (e.getClick().isLeftClick()) {
+						ItemMeta meta = e.getCurrentItem().getItemMeta();
+						if (meta.getDisplayName().equalsIgnoreCase("Gamemode Survival(0)")) {
+							Player p = (Player) e.getWhoClicked();
+							if(p.hasPermission("helpitem.playermenue.gm0")) {
+								File file = new File("plugins/HelpItem", "UUID.yml");
+								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+								if (cfg.contains(invname)) {
+									String uid = cfg.getString(invname + ".UUID");
+									Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+									p2.setGameMode(GameMode.SURVIVAL);
+									p2.sendMessage("§6Dein GameMode wurde auf Survival geändert!");
+									p.closeInventory();
+									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								} else {
+									p.sendMessage("Fehler in der Verarbeitung!");
+									return;
+								}
+							} else {
+								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+								return;
+							}
+						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Creative(1)")) {
+							Player p = (Player) e.getWhoClicked();
+							if(p.hasPermission("helpitem.playermenue.gm1")) {
+								File file = new File("plugins/HelpItem", "UUID.yml");
+								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+								if (cfg.contains(invname)) {
+									String uid = cfg.getString(invname + ".UUID");
+									Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+									p2.setGameMode(GameMode.CREATIVE);
+									p2.sendMessage("§6Dein GameMode wurde auf Creative geändert!");
+									p.closeInventory();
+									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								} else {
+									p.sendMessage("Fehler in der Verarbeitung!");
+									return;
+								}
+							} else {
+								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+								return;
+							}
+						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Adventure(2)")) {
+							Player p = (Player) e.getWhoClicked();
+							if(p.hasPermission("helpitem.playermenue.gm2")) {
+								File file = new File("plugins/HelpItem", "UUID.yml");
+								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+								if (cfg.contains(invname)) {
+									String uid = cfg.getString(invname + ".UUID");
+									Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+									p2.setGameMode(GameMode.ADVENTURE);
+									p2.sendMessage("§6Dein GameMode wurde auf Adventure geändert!");
+									p.closeInventory();
+									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								} else {
+									p.sendMessage("Fehler in der Verarbeitung!");
+									return;
+								}
+							} else {
+								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+								return;
+							}
+						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Spectator(3)")) {
+							Player p = (Player) e.getWhoClicked();
+							if(p.hasPermission("helpitem.playermenue.gm3")) {
+								File file = new File("plugins/HelpItem", "UUID.yml");
+								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+								if (cfg.contains(invname)) {
+									String uid = cfg.getString(invname + ".UUID");
+									Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+									p2.setGameMode(GameMode.SPECTATOR);
+									p2.sendMessage("§6Dein GameMode wurde auf Spectator geändert!");
+									p.closeInventory();
+									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								} else {
+									p.sendMessage("Fehler in der Verarbeitung!");
+									return;
+								}
+							} else {
+								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
+								return;
+							}
 						}
 					}
 				} else {
