@@ -1,9 +1,13 @@
 package de.philipgrabow.helpitem;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -72,10 +76,15 @@ public class PlayerMenue {
 		ItemMeta meta = is.getItemMeta();
 		meta.setDisplayName("Gamemode Survival(0)");
 		ArrayList<String> list = new ArrayList<String>();
-		@SuppressWarnings("deprecation")
-		Player p2 = Bukkit.getPlayer(name);
-		list.add("Aktueller Gamemode: " + p2.getGameMode());
-		meta.setLore(list);
+		File file = new File("plugins/HelpItem", "UUID.yml");
+		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		if (cfg.contains(name)) {
+			String uid = cfg.getString(name + ".UUID");
+			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+			list.add("Aktueller Gamemode: " + p2.getGameMode());
+			meta.setLore(list);
+
+		}
 		is.setItemMeta(meta);
 		return is;
 	}
@@ -85,10 +94,14 @@ public class PlayerMenue {
 		ItemMeta meta = is.getItemMeta();
 		meta.setDisplayName("Gamemode Creative(1)");
 		ArrayList<String> list = new ArrayList<String>();
-		@SuppressWarnings("deprecation")
-		Player p2 = Bukkit.getPlayer(name);
-		list.add("Aktueller Gamemode: " + p2.getGameMode());
-		meta.setLore(list);
+		File file = new File("plugins/HelpItem", "UUID.yml");
+		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		if (cfg.contains(name)) {
+			String uid = cfg.getString(name + ".UUID");
+			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+			list.add("Aktueller Gamemode: " + p2.getGameMode());
+			meta.setLore(list);
+		}
 		is.setItemMeta(meta);
 		return is;
 	}
@@ -98,10 +111,14 @@ public class PlayerMenue {
 		ItemMeta meta = is.getItemMeta();
 		meta.setDisplayName("Gamemode Adventure(2)");
 		ArrayList<String> list = new ArrayList<String>();
-		@SuppressWarnings("deprecation")
-		Player p2 = Bukkit.getPlayer(name);
-		list.add("Aktueller Gamemode: " + p2.getGameMode());
-		meta.setLore(list);
+		File file = new File("plugins/HelpItem", "UUID.yml");
+		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		if (cfg.contains(name)) {
+			String uid = cfg.getString(name + ".UUID");
+			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+			list.add("Aktueller Gamemode: " + p2.getGameMode());
+			meta.setLore(list);
+		}
 		is.setItemMeta(meta);
 		return is;
 	}
@@ -111,10 +128,14 @@ public class PlayerMenue {
 		ItemMeta meta = is.getItemMeta();
 		meta.setDisplayName("Gamemode Spectator(3)");
 		ArrayList<String> list = new ArrayList<String>();
-		@SuppressWarnings("deprecation")
-		Player p2 = Bukkit.getPlayer(name);
-		list.add("Aktueller Gamemode: " + p2.getGameMode());
-		meta.setLore(list);
+		File file = new File("plugins/HelpItem", "UUID.yml");
+		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		if (cfg.contains(name)) {
+			String uid = cfg.getString(name + ".UUID");
+			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+			list.add("Aktueller Gamemode: " + p2.getGameMode());
+			meta.setLore(list);
+		}
 		is.setItemMeta(meta);
 		return is;
 	}

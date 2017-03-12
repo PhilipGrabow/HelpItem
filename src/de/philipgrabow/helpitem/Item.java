@@ -19,7 +19,7 @@ public class Item {
 		description.add("Öffnet die");
 		description.add("Hilfe im");
 		description.add("im Spiel!");
-		meta.setDisplayName("HILFE!");
+		meta.setDisplayName("§6HILFE!");
 		meta.setLore(description);
 		meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 		is.setItemMeta(meta);

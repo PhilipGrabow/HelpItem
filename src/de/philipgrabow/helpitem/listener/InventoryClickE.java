@@ -1,11 +1,15 @@
 package de.philipgrabow.helpitem.listener;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -177,12 +181,16 @@ public class InventoryClickE implements Listener {
 					if (meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.hunger")) {
-							@SuppressWarnings("deprecation")
-							Player p2 = Bukkit.getPlayer(invname);
-							p2.setFoodLevel(20);
-							p2.sendMessage("§6Dein Hunger wurde gestillt!");
-							p.closeInventory();
-							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							File file = new File("plugins/HelpItem", "UUID.yml");
+							FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+							if (cfg.contains(invname)) {
+								String uid = cfg.getString(invname + ".UUID");
+								Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+								p2.setFoodLevel(20);
+								p2.sendMessage("§6Dein Hunger wurde gestillt!");
+								p.closeInventory();
+								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							}
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
 							return;
@@ -197,12 +205,16 @@ public class InventoryClickE implements Listener {
 					if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler")) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.heal")) {
-							@SuppressWarnings("deprecation")
-							Player p2 = Bukkit.getPlayer(invname);
-							p2.setHealth(20.0);
-							p2.sendMessage("§6Du wurdest geheilt!");
-							p.closeInventory();
-							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							File file = new File("plugins/HelpItem", "UUID.yml");
+							FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+							if (cfg.contains(invname)) {
+								String uid = cfg.getString(invname + ".UUID");
+								Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+								p2.setHealth(20.0);
+								p2.sendMessage("§6Du wurdest geheilt!");
+								p.closeInventory();
+								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							}
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
 							return;
