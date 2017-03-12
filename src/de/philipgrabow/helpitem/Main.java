@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.philipgrabow.helpitem.executor.ItemCreate;
 import de.philipgrabow.helpitem.listener.InteractE;
 import de.philipgrabow.helpitem.listener.InventoryClickE;
+import de.philipgrabow.helpitem.listener.PlayerJoinE;
 
 public class Main extends JavaPlugin {
 
@@ -26,6 +27,7 @@ public class Main extends JavaPlugin {
 	}
 	public void registerListener() {
 		PluginManager pm = Bukkit.getPluginManager();
+		pm.registerEvents(new PlayerJoinE(), this);
 		pm.registerEvents(new InteractE(), this);
 		pm.registerEvents(new InventoryClickE(), this);
 	}
