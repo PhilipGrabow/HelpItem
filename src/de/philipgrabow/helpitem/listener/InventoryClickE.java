@@ -190,6 +190,9 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein Hunger wurde gestillt!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							} else {
+								p.sendMessage("Fehler in der Verarbeitung!");
+								return;
 							}
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
@@ -214,6 +217,9 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Du wurdest geheilt!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							} else {
+								p.sendMessage("Fehler in der Verarbeitung!");
+								return;
 							}
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
@@ -226,7 +232,7 @@ public class InventoryClickE implements Listener {
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
 				if(e.getClick().isLeftClick()) {
 					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if(meta.getDisplayName().equalsIgnoreCase("Leert das Inventar von diesem Spieler!")) {
+					if(meta.getDisplayName().equalsIgnoreCase("§cLeert das Inventar von diesem Spieler!")) {
 						Player p = (Player) e.getWhoClicked();
 						if(p.hasPermission("helpitem.playermenue.invclear")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -238,6 +244,9 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein Inventar wurde geleert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+							} else {
+								p.sendMessage("Fehler in der Verarbeitung!");
+								return;
 							}
 						} else {
 							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
