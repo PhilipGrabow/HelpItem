@@ -30,6 +30,7 @@ public class PlayerMenue {
 		ItemStack gm1 = papiergm1(name);
 		ItemStack gm2 = papiergm2(name);
 		ItemStack gm3 = papiergm3(name);
+		ItemStack compass = compass(name);
 
 		inv.setItem(0, dia);
 		inv.setItem(1, wheat);
@@ -38,6 +39,7 @@ public class PlayerMenue {
 		inv.setItem(12, gm1);
 		inv.setItem(13, gm2);
 		inv.setItem(14, gm3);
+		inv.setItem(5, compass);
 
 	}
 	//Hunger stillen
@@ -134,6 +136,30 @@ public class PlayerMenue {
 			String uid = cfg.getString(name + ".UUID");
 			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
 			list.add("Aktueller Gamemode: " + p2.getGameMode());
+			meta.setLore(list);
+		}
+		is.setItemMeta(meta);
+		return is;
+	}
+	//Kompass (Koordinatenanzeiger)
+	public static ItemStack compass(String name) {
+		ItemStack is = new ItemStack(Material.COMPASS);
+		ItemMeta meta = is.getItemMeta();
+		meta.setDisplayName("KOORDINATEN:");
+		ArrayList<String> list = new ArrayList<String>();
+		File file = new File("plugins/HelpItem", "UUID.yml");
+		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+		if(cfg.contains(name)) {
+			String uid = cfg.getString(name + ".UUID");
+			Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+			list.add("§cSpieler: " + p2.getName());
+			list.add("§cKoordinaten:");
+			list.add("§cX: " + p2.getLocation().getBlockX());
+			list.add("§cY: " + p2.getLocation().getBlockY());
+			list.add("§cZ: " + p2.getLocation().getBlockZ());
+			list.add("§cYAW: " + p2.getLocation().getYaw());
+			list.add("§cPITCH: " + p2.getLocation().getPitch());
+			list.add("§6§lLINKS-KLICK ZUM TELEPORT!!!");
 			meta.setLore(list);
 		}
 		is.setItemMeta(meta);

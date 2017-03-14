@@ -1,5 +1,5 @@
 name: HelpItem
-version: 0.1.5
+version: 0.1.6
 author: PhilipGrabow
 
 main: de.philipgrabow.helpitem.Main
@@ -50,8 +50,30 @@ permissions:
     default: op
     children:
       - helpitem.playermenue.hunger: op
+      - helpitem.playermenue.heal: op
+      - helpitem.playermenue.invclear: op
+      - helpitem.playermenue.gm0: op
+      - helpitem.playermenue.gm1: op
+      - helpitem.playermenue.gm2: op
+      - helpitem.playermenue.gm3: op
   helpitem.playermenue.hunger:
     description: Berechtigt zum Spieler hunger stillen
     default: op
-  
-  
+  helpitem.playermenue.heal:
+    description: Berechtigt zum Spieler heilen
+    default: op
+  helpitem.playermenue.invclear:
+    description: Berechtigt zum Inventar leeren
+    default: op
+  helpitem.playermenue.gm0:
+    description: Berechtigt fuer Gamemode 0
+    default: true
+  helpitem.playermenue.gm1:
+    description: Berechtigt fuer Gamemode 1
+    default: op
+  helpitem.playermenue.gm2:
+    description: Berechtigt fuer Gamemode 2
+    default: op
+  helpitem.playermenue.gm3:
+    description: Berechtigt fuer Gamemode 3
+    default: op

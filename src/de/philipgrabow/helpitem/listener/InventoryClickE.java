@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -49,7 +50,7 @@ public class InventoryClickE implements Listener {
 						p.closeInventory();
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.WRITTEN_BOOK) {
 				BookMeta meta = (BookMeta) e.getCurrentItem().getItemMeta();
@@ -60,7 +61,7 @@ public class InventoryClickE implements Listener {
 						p.getInventory().addItem(HelpBook.loadBook(book));
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.GOLDEN_APPLE) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
@@ -73,12 +74,11 @@ public class InventoryClickE implements Listener {
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.GOLDEN_CARROT) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
@@ -91,12 +91,11 @@ public class InventoryClickE implements Listener {
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
@@ -109,12 +108,11 @@ public class InventoryClickE implements Listener {
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.PAPER) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
@@ -122,7 +120,7 @@ public class InventoryClickE implements Listener {
 					if (meta.getDisplayName().contains("Über dieses Plugin!")) {
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
 				if (e.getClick().isLeftClick()) {
@@ -144,8 +142,7 @@ public class InventoryClickE implements Listener {
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 					if (meta.getDisplayName().contains("Dich zum Owner machen!")) {
@@ -158,12 +155,11 @@ public class InventoryClickE implements Listener {
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else {
 				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
@@ -192,16 +188,14 @@ public class InventoryClickE implements Listener {
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							} else {
-								p.sendMessage("Fehler in der Verarbeitung!");
-								return;
+								p.sendMessage("§cFehler in der Verarbeitung!");
 							}
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.DIAMOND) {
 				if (e.getClick().isLeftClick()) {
@@ -219,16 +213,14 @@ public class InventoryClickE implements Listener {
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							} else {
-								p.sendMessage("Fehler in der Verarbeitung!");
-								return;
+								p.sendMessage("§cFehler in der Verarbeitung!");
 							}
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
 				if (e.getClick().isLeftClick()) {
@@ -246,20 +238,18 @@ public class InventoryClickE implements Listener {
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							} else {
-								p.sendMessage("Fehler in der Verarbeitung!");
-								return;
+								p.sendMessage("§cFehler in der Verarbeitung!");
 							}
 						} else {
-							p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-							return;
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 						}
 					}
-				} else if (e.getCurrentItem().getType() == Material.PAPER) {
+			} else if (e.getCurrentItem().getType() == Material.PAPER) {
 					if (e.getClick().isLeftClick()) {
 						ItemMeta meta = e.getCurrentItem().getItemMeta();
 						if (meta.getDisplayName().equalsIgnoreCase("Gamemode Survival(0)")) {
 							Player p = (Player) e.getWhoClicked();
-							if(p.hasPermission("helpitem.playermenue.gm0")) {
+							if (p.hasPermission("helpitem.playermenue.gm0")) {
 								File file = new File("plugins/HelpItem", "UUID.yml");
 								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 								if (cfg.contains(invname)) {
@@ -270,16 +260,14 @@ public class InventoryClickE implements Listener {
 									p.closeInventory();
 									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 								} else {
-									p.sendMessage("Fehler in der Verarbeitung!");
-									return;
+									p.sendMessage("§cFehler in der Verarbeitung!");
 								}
 							} else {
-								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-								return;
+								p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 							}
-						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Creative(1)")) {
+						} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Creative(1)")) {
 							Player p = (Player) e.getWhoClicked();
-							if(p.hasPermission("helpitem.playermenue.gm1")) {
+							if (p.hasPermission("helpitem.playermenue.gm1")) {
 								File file = new File("plugins/HelpItem", "UUID.yml");
 								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 								if (cfg.contains(invname)) {
@@ -290,16 +278,14 @@ public class InventoryClickE implements Listener {
 									p.closeInventory();
 									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 								} else {
-									p.sendMessage("Fehler in der Verarbeitung!");
-									return;
+									p.sendMessage("§cFehler in der Verarbeitung!");
 								}
 							} else {
-								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-								return;
+								p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 							}
-						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Adventure(2)")) {
+						} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Adventure(2)")) {
 							Player p = (Player) e.getWhoClicked();
-							if(p.hasPermission("helpitem.playermenue.gm2")) {
+							if (p.hasPermission("helpitem.playermenue.gm2")) {
 								File file = new File("plugins/HelpItem", "UUID.yml");
 								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 								if (cfg.contains(invname)) {
@@ -310,16 +296,14 @@ public class InventoryClickE implements Listener {
 									p.closeInventory();
 									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 								} else {
-									p.sendMessage("Fehler in der Verarbeitung!");
-									return;
+									p.sendMessage("§cFehler in der Verarbeitung!");
 								}
 							} else {
-								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-								return;
+								p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 							}
-						}else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Spectator(3)")) {
+						} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Spectator(3)")) {
 							Player p = (Player) e.getWhoClicked();
-							if(p.hasPermission("helpitem.playermenue.gm3")) {
+							if (p.hasPermission("helpitem.playermenue.gm3")) {
 								File file = new File("plugins/HelpItem", "UUID.yml");
 								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 								if (cfg.contains(invname)) {
@@ -330,17 +314,42 @@ public class InventoryClickE implements Listener {
 									p.closeInventory();
 									p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 								} else {
-									p.sendMessage("Fehler in der Verarbeitung!");
-									return;
+									p.sendMessage("§cFehler in der Verarbeitung!");
 								}
 							} else {
-								p.sendMessage("Du hast keine Berechtigung zu dieser Funktion!");
-								return;
+								p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
 							}
 						}
 					}
 				} else {
-					e.getWhoClicked().sendMessage("Nur Linksklick erlaubt!");
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+				}
+			} else if(e.getCurrentItem().getType() == Material.COMPASS) {
+				if(e.getClick().isLeftClick()) {
+					ItemMeta meta = e.getCurrentItem().getItemMeta();
+					if(meta.getDisplayName().equalsIgnoreCase("KOORDINATEN:")) {
+						Player p = (Player) e.getWhoClicked();
+						if(p.hasPermission("helpitem.playermenue.tele")) {
+							File file = new File("plugins/HelpItem", "UUID.yml");
+							FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+							if(cfg.contains(invname)) {
+								String uid = cfg.getString(invname + ".UUID");
+								Player p2 = Bukkit.getPlayer(UUID.fromString(uid));
+								Location loc = p2.getLocation();
+								p.teleport(loc);
+								p.sendMessage("§6Du wurdest zu Spieler '" + p2.getName() + "' teleportiert!");
+								p2.sendMessage("§6Spieler '" + p.getName() + "' wurde zu dir teleportiert!");
+								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								p.closeInventory();
+							} else {
+								p.sendMessage("§cFehler in der Verarbeitung!");
+							}
+						} else {
+							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+						}
+					}
+				} else {
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else {
 				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
