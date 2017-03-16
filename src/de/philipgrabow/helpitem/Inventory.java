@@ -14,7 +14,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class Inventory {
 
-	@SuppressWarnings("deprecation")
 	public static void openInventory(Player p) {
 		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 54, "Hilfemenü");
 		loadItems(inv);
@@ -29,7 +28,6 @@ public class Inventory {
 		}, 100);
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void loadItems(org.bukkit.inventory.Inventory inv) {
 		//ItemStacks laden
 		ItemStack goldenapple = Inventory.GoldenApple();

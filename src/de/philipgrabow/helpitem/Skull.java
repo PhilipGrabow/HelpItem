@@ -30,7 +30,6 @@ public class Skull {
 	}
 	public static void CreateHeads(ArrayList<String> list) {
 		for(String playername : list) {
-			@SuppressWarnings("deprecation")
 			Player p = Bukkit.getPlayer(playername);
 			listHead(p);
 		}
