@@ -39,10 +39,12 @@ public class ItemCreate implements CommandExecutor {
 							message1.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM,
 									new ComponentBuilder("Klicke hier für NEIN!").create()));
 							message.addExtra(message1);
+							p.sendMessage(ChatColor.LIGHT_PURPLE + "###############################################");
 							p.sendMessage("§cWillst du dieses Item wirklich?");
 							p.sendMessage(ChatColor.YELLOW + "Klicke JA oder NEIN unter diesem Text!");
 							list.add(p.getName());
 							p.spigot().sendMessage(message);
+							p.sendMessage(ChatColor.LIGHT_PURPLE + "###############################################");
 							return true;
 						}
 					}
