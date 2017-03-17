@@ -13,6 +13,10 @@ public class Item {
 
 	// Spieler kriegt Das modifizierte Item!
 	public static void createItem(Player p) {
+		ItemStack is = hook();
+		p.getInventory().addItem(is);
+	}
+	public static ItemStack hook() {
 		ItemStack is = new ItemStack(Material.TRIPWIRE_HOOK, 1);
 		ItemMeta meta = is.getItemMeta();
 		ArrayList<String> description = new ArrayList<String>();
@@ -23,6 +27,6 @@ public class Item {
 		meta.setLore(description);
 		meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 		is.setItemMeta(meta);
-		p.getInventory().addItem(is);
+		return is;
 	}
 }

@@ -18,14 +18,14 @@ public class Inventory {
 		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 54, "Hilfemenü");
 		loadItems(inv);
 		p.openInventory(inv);
-		Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("HelpItem"), new Runnable() {
-
-			@Override
-			public void run() {
-				p.updateInventory();
-			}
-
-		}, 100);
+//		Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("HelpItem"), new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				p.updateInventory();
+//			}
+//
+//		}, 100);
 	}
 
 	public static void loadItems(org.bukkit.inventory.Inventory inv) {
@@ -45,7 +45,7 @@ public class Inventory {
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 			SkullMeta meta = (SkullMeta) skull.getItemMeta();
-			meta.setOwner(Bukkit.getPlayer(p.getName()).getUniqueId().toString());
+			meta.setOwner(p.getName());
 			meta.setDisplayName(p.getName());
 			ArrayList<String> list = new ArrayList<String>();
 			list.add(ChatColor.YELLOW + p.getName() + "`s Spieler-Menü");
