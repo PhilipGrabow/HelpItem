@@ -56,6 +56,7 @@ permissions:
       - helpitem.playermenue.gm1: op
       - helpitem.playermenue.gm2: op
       - helpitem.playermenue.gm3: op
+      - helpitem.playermenue.tele: op
   helpitem.playermenue.hunger:
     description: Berechtigt zum Spieler hunger stillen
     default: op
@@ -76,4 +77,7 @@ permissions:
     default: op
   helpitem.playermenue.gm3:
     description: Berechtigt fuer Gamemode 3
+    default: op
+  helpitem.playermenue.tele:
+    description: Zeigt Koordinaten und teleportiert dich
     default: op

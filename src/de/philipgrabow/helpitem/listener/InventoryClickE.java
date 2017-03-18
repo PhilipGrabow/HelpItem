@@ -32,110 +32,134 @@ public class InventoryClickE implements Listener {
 		String invname = e.getInventory().getName();
 		if (invname.equalsIgnoreCase("Hilfemenü")) {
 			// Inventar Slot 0 (Zeit zu Tag)
-
 			if (e.getCurrentItem().getType() == Material.WATCH) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Zeit: Tag!")) {
+				if (meta.getDisplayName().contains("Zeit: Tag!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						p.getWorld().setTime(1000);
 						p.sendMessage("§6Du hast es zu Tag gemacht!");
 						p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 						p.closeInventory();
+						e.setCancelled(true);
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-					if (meta.getDisplayName().contains("Zeit: Nacht!")) {
+				}
+				if (meta.getDisplayName().contains("Zeit: Nacht!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						p.getWorld().setTime(13000);
 						p.sendMessage("§6Du hast es zu Nacht gemacht!");
 						p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 						p.closeInventory();
+						e.setCancelled(true);
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.WRITTEN_BOOK) {
 				BookMeta meta = (BookMeta) e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Hilfemenü-Erklärung!")) {
+				if (meta.getDisplayName().contains("Hilfemenü-Erklärung!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						ItemStack book = null;
 						p.getInventory().addItem(HelpBook.loadBook(book));
 						e.setCancelled(true);
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.GOLDEN_APPLE) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Heilen!")) {
+				if (meta.getDisplayName().contains("Heilen!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.heal")) {
 							p.setHealth(20.0);
 							p.sendMessage("§6Du hast dich geheilt!");
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
+							e.setCancelled(true);
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.GOLDEN_CARROT) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Hunger stillen!")) {
+				if (meta.getDisplayName().contains("Hunger stillen!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.hunger")) {
 							p.setFoodLevel(20);
 							p.sendMessage("§6Du bist jetzt satt!");
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
+							e.setCancelled(true);
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Sterben!")) {
+				if (meta.getDisplayName().contains("Sterben!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.kill")) {
 							p.setHealth(0.0);
 							p.sendMessage("§6Du bist gestorben!");
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
+							e.setCancelled(true);
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.PAPER) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
-				if (e.getClick().isLeftClick()) {
-					if (meta.getDisplayName().contains("Über dieses Plugin!")) {
+				if (meta.getDisplayName().contains("Über dieses Plugin!")) {
+					if (e.getClick().isLeftClick()) {
+						e.setCancelled(true);
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
-				if (e.getClick().isLeftClick()) {
-					ArrayList<String> list = new ArrayList<String>();
-					for (Player p : Bukkit.getOnlinePlayers()) {
-						list.add(p.getName());
-					}
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (list.contains(meta.getDisplayName())) {
+				ArrayList<String> list = new ArrayList<String>();
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					list.add(p.getName());
+				}
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (list.contains(meta.getDisplayName())) {
+					if (e.getClick().isLeftClick()) {
 						PlayerMenue.openInventory((Player) e.getWhoClicked(), meta.getDisplayName());
+						e.setCancelled(true);					
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-					if (meta.getDisplayName().contains("Dich zum Mitglied machen!")) {
+				}
+				if (meta.getDisplayName().contains("Dich zum Mitglied machen!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.mitglied")) {
 							p.getServer().dispatchCommand(p.getServer().getConsoleSender(),
@@ -144,11 +168,18 @@ public class InventoryClickE implements Listener {
 							p.setOp(false);
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
+							e.setCancelled(true);
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-					if (meta.getDisplayName().contains("Dich zum Owner machen!")) {
+				}
+				if (meta.getDisplayName().contains("Dich zum Owner machen!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.owner")) {
 							p.getServer().dispatchCommand(p.getServer().getConsoleSender(),
@@ -157,15 +188,19 @@ public class InventoryClickE implements Listener {
 							p.setOp(true);
 							p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 							p.closeInventory();
+							e.setCancelled(true);
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else {
 				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
+				e.setCancelled(true);
 			}
 		}
 		ArrayList<String> list = new ArrayList<String>();
@@ -378,6 +413,6 @@ public class InventoryClickE implements Listener {
 				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
 			}
 		}
-//		e.setCancelled(true);
+		// e.setCancelled(true);
 	}
 }
