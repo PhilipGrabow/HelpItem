@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
 	public void registerListener() {
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new PlayerJoinE(), this);
-		pm.registerEvents(new InteractE(), this);
+		pm.registerEvents(new InteractE(this), this);
 		pm.registerEvents(new InventoryClickE(), this);
 	}
 	
