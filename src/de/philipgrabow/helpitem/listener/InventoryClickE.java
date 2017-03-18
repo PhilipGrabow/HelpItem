@@ -152,7 +152,7 @@ public class InventoryClickE implements Listener {
 				if (list.contains(meta.getDisplayName())) {
 					if (e.getClick().isLeftClick()) {
 						PlayerMenue.openInventory((Player) e.getWhoClicked(), meta.getDisplayName());
-						e.setCancelled(true);					
+						e.setCancelled(true);
 					} else {
 						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
@@ -203,16 +203,16 @@ public class InventoryClickE implements Listener {
 				e.setCancelled(true);
 			}
 		}
+		///////////////////////////////////////// Player-Menü//////////////////////////////////////////////////////////////////////////////////
 		ArrayList<String> list = new ArrayList<String>();
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			list.add(p.getName());
 		}
-		///////////////////////////////////////// Player-Menü//////////////////////////////////////////////////////////////////////////////////
 		if (list.contains(invname)) {
 			if (e.getCurrentItem().getType() == Material.WHEAT) {
-				if (e.getClick().isLeftClick()) {
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (meta.getDisplayName().equalsIgnoreCase("Hunger stillen!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.hunger")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -224,20 +224,24 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein Hunger wurde gestillt!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.DIAMOND) {
-				if (e.getClick().isLeftClick()) {
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler!")) {
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (meta.getDisplayName().equalsIgnoreCase("Heilt den Spieler!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.heal")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -249,20 +253,24 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Du wurdest geheilt!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.TNT) {
-				if (e.getClick().isLeftClick()) {
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().contains("Leert das Inventar von diesem Spieler!")) {
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (meta.getDisplayName().contains("Leert das Inventar von diesem Spieler!")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.invclear")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -274,20 +282,24 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein Inventar wurde geleert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.PAPER) {
-				if (e.getClick().isLeftClick()) {
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().equalsIgnoreCase("Gamemode Survival(0)")) {
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (meta.getDisplayName().equalsIgnoreCase("Gamemode Survival(0)")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.gm0")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -299,14 +311,21 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein GameMode wurde auf Survival geändert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
-					} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Creative(1)")) {
+					}
+				} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Creative(1)")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.gm1")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -318,14 +337,21 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein GameMode wurde auf Creative geändert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
-					} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Adventure(2)")) {
+					}
+				} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Adventure(2)")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.gm2")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -337,14 +363,21 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein GameMode wurde auf Adventure geändert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
-					} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Spectator(3)")) {
+					}
+				} else if (meta.getDisplayName().equalsIgnoreCase("Gamemode Spectator(3)")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.gm3")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -356,21 +389,24 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Dein GameMode wurde auf Spectator geändert!");
 								p.closeInventory();
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.COMPASS) {
-				if (e.getClick().isLeftClick()) {
-					ItemMeta meta = e.getCurrentItem().getItemMeta();
-					if (meta.getDisplayName().equalsIgnoreCase("KOORDINATEN:")) {
+				ItemMeta meta = e.getCurrentItem().getItemMeta();
+				if (meta.getDisplayName().equalsIgnoreCase("KOORDINATEN:")) {
+					if (e.getClick().isLeftClick()) {
 						Player p = (Player) e.getWhoClicked();
 						if (p.hasPermission("helpitem.playermenue.tele")) {
 							File file = new File("plugins/HelpItem", "UUID.yml");
@@ -384,35 +420,36 @@ public class InventoryClickE implements Listener {
 								p2.sendMessage("§6Spieler '" + p.getName() + "' wurde zu dir teleportiert!");
 								p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 20, 1);
 								p.closeInventory();
+								e.setCancelled(true);
 							} else {
 								p.sendMessage("§cFehler in der Verarbeitung!");
+								e.setCancelled(true);
 							}
 						} else {
 							p.sendMessage("§cDu hast keine Berechtigung zu dieser Funktion!");
+							e.setCancelled(true);
 						}
 					} else {
-						return;
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
 			} else if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
-				if (e.getClick().isLeftClick()) {
-					Player p = (Player) e.getWhoClicked();
-					ItemStack is = PlayerMenue.skull(invname);
-					SkullMeta meta = (SkullMeta) is.getItemMeta();
-					SkullMeta meta2 = (SkullMeta) e.getCurrentItem().getItemMeta();
-					if (meta.getOwner() == meta2.getOwner()) {
+				Player p = (Player) e.getWhoClicked();
+				ItemStack is = PlayerMenue.skull(invname);
+				SkullMeta meta = (SkullMeta) is.getItemMeta();
+				SkullMeta meta2 = (SkullMeta) e.getCurrentItem().getItemMeta();
+				if (meta.getOwner() == meta2.getOwner()) {
+					if (e.getClick().isLeftClick()) {
 						PlayerMenue.openInventory((Player) e.getWhoClicked(), meta.getOwner());
 						p.sendMessage(ChatColor.GOLD + "Inventar aktualisiert!!");
+						e.setCancelled(true);
+					} else {
+						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+						e.setCancelled(true);
 					}
-				} else {
-					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
 				}
-			} else {
-				e.getWhoClicked().sendMessage(ChatColor.RED + "Dieses Item hat noch keine Funktion!");
 			}
 		}
-		// e.setCancelled(true);
 	}
 }
