@@ -1,5 +1,5 @@
 name: HelpItem
-version: 0.1.6
+version: 0.1.7
 author: PhilipGrabow
 
 main: de.philipgrabow.helpitem.Main
@@ -10,7 +10,10 @@ commands:
     aliases: [helpitem, hi]
     permission: helpitem.create.self
     usage: /<command>
- 
+  applybook:
+    description: Erzeugt das Hilfebuch
+    aliases: [abook, applybook]
+    usage: /<command> [help|confirm]
 permissions:
   helpitem.*:
     description: All Access
@@ -24,6 +27,7 @@ permissions:
       - helpitem.mitglied: op
       - helpitem.owner: op
       - helpitem.playermenue.*: op
+      - helpitem.helpbook.help: op
   helpitem.create.self:
     description: Du kannst dir das Item erzeugen!
     default: true
@@ -45,6 +49,12 @@ permissions:
   helpitem.owner:
     description: Macht dich zum Owner
     default: op
+  helpitem.helpbook.*:
+    descriprion: HilfeBuch
+    default: op
+    children:
+      - helpitem.helpbook.help: op
+      - helpitem.helpbook.confirm: op
   helpitem.playermenue.*:
     description: All Access to Playermenue
     default: op

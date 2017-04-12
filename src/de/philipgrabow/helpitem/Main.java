@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.philipgrabow.helpitem.executor.HelpBookOverride;
 import de.philipgrabow.helpitem.executor.ItemCreate;
 import de.philipgrabow.helpitem.listener.InteractE;
 import de.philipgrabow.helpitem.listener.InventoryClickE;
@@ -24,6 +25,7 @@ public class Main extends JavaPlugin {
 	}
 	public void registerCmd() {
 		getCommand("helpitem").setExecutor(new ItemCreate());
+		getCommand("applybook").setExecutor(new HelpBookOverride());
 	}
 	public void registerListener() {
 		PluginManager pm = Bukkit.getPluginManager();

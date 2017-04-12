@@ -58,7 +58,7 @@ public class PlayerMenue {
 			meta.setOwner(p.getName());
 			meta.setDisplayName(p.getName());
 			ArrayList<String> list = new ArrayList<String>();
-			list.add("§aLeben: §c§l" + p.getHealth() + "§a von §c§l20 §aLebenspunkten");
+			list.add("§aLeben: §c§l" + p.getHealth() + "§a von §c§l20.0 §aLebenspunkten");
 			list.add("§aHunger: §c§l" + p.getFoodLevel() + "§a von §c§l20 §aHungerpunkten");
 			list.add("§aGamemode: §c§l" + p.getGameMode());
 			list.add("§aFliegen erlaubt: §c§l" + p.getAllowFlight());
@@ -71,6 +71,7 @@ public class PlayerMenue {
 				int onlinetime = cfg.getInt(time);
 				list.add("§aOnlineZeit: §c§l" + onlinetime + " Minuten!");
 			}
+			list.add("§aUUID: §c§l" + p.getUniqueId().toString());
 			meta.setLore(list);
 			skullis.setItemMeta(meta);
 		}

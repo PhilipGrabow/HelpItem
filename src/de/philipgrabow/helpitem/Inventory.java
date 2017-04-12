@@ -18,14 +18,6 @@ public class Inventory {
 		org.bukkit.inventory.Inventory inv = Bukkit.createInventory(p, 54, "Hilfemenü");
 		loadItems(inv);
 		p.openInventory(inv);
-//		Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("HelpItem"), new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				p.updateInventory();
-//			}
-//
-//		}, 100);
 	}
 
 	public static void loadItems(org.bukkit.inventory.Inventory inv) {

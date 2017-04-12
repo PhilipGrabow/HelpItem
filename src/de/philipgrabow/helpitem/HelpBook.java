@@ -13,7 +13,7 @@ public class HelpBook {
 	public static ItemStack loadBook(ItemStack book) {
 		book = new ItemStack(Material.WRITTEN_BOOK, 1);
 		BookMeta meta = (BookMeta) book.getItemMeta();
-		meta.setDisplayName("Hilfemenü-Erklärung!");
+		meta.setDisplayName("HelpBook");
 		meta.setAuthor("Philip_Grabow");
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add("Zum Verständnis!");
