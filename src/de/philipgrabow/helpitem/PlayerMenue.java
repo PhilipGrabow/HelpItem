@@ -43,7 +43,6 @@ public class PlayerMenue {
 		inv.setItem(13, gm2);
 		inv.setItem(14, gm3);
 		inv.setItem(6, compass);
-
 	}
 
 	public static ItemStack skull(String name) {

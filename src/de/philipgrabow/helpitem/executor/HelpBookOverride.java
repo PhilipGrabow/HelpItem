@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,15 +23,15 @@ public class HelpBookOverride implements CommandExecutor {
 				Player p = (Player) sender;
 				if (args.length == 0) {
 					if (p.hasPermission("helpitem.helpbook.help")) {
-						p.sendMessage("Du bist im Menü wo du das HilfeBuch von 'HelpItem' verändern kannst!");
-						p.sendMessage("Hier siehst du ALLE MÖGLICHKEITEN VON DIESEM COMMAND: ");
-						p.sendMessage("1.Möglichkeit: /applybook confirm");
-						p.sendMessage("Übernimmt das Buch was du in der Hand hälst!");
-						p.sendMessage("2.Möglichkeit: /applybook inventory");
-						p.sendMessage(
+						p.sendMessage(ChatColor.RED + "Du bist im Menü wo du das HilfeBuch von 'HelpItem' verändern kannst!");
+						p.sendMessage(ChatColor.GOLD + "Hier siehst du ALLE MÖGLICHKEITEN VON DIESEM COMMAND: ");
+						p.sendMessage(ChatColor.LIGHT_PURPLE + "1.Möglichkeit: /applybook confirm");
+						p.sendMessage(ChatColor.GOLD + "Übernimmt das Buch was du in der Hand hälst!");
+						p.sendMessage(ChatColor.LIGHT_PURPLE + "2.Möglichkeit: /applybook inventory");
+						p.sendMessage(ChatColor.GOLD + 
 								"Übernimmt das Buch was in deinem Inventar liegt es muss aber den Namen 'HELPBOOK' haben!");
-						p.sendMessage("3.Möglichkeit: /applybook new");
-						p.sendMessage("Erstellt dir ein neues Buch mit passendem Namen für die 2.Möglichkeit!");
+						p.sendMessage(ChatColor.LIGHT_PURPLE + "3.Möglichkeit: /applybook new");
+						p.sendMessage(ChatColor.GOLD + "Erstellt dir ein neues Buch mit passendem Namen für die 2.Möglichkeit!");
 						return true;
 					} else {
 						sender.sendMessage("Keine Berechtigung!");
@@ -53,17 +54,15 @@ public class HelpBookOverride implements CommandExecutor {
 								}
 								FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 								String material = Material.WRITTEN_BOOK.toString();
-								String displayname = meta.getDisplayName();
 								String title = meta.getTitle();
 								String author = meta.getAuthor();
 								int seitenzahl = meta.getPageCount();
 								List<String> list = meta.getPages();
-								cfg.set("HelpBook.Name", displayname);
 								cfg.set("HelpBook.Title", title);
 								cfg.set("HelpBook.Material", material);
-								cfg.set("HelpBook.author", author);
+								cfg.set("HelpBook.Author", author);
 								cfg.set("HelpBook.Sites", seitenzahl);
-								cfg.set("HelpBook.pages", list);
+								cfg.set("HelpBook.Pages", list);
 								try {
 									cfg.save(file);
 								} catch (IOException e) {
