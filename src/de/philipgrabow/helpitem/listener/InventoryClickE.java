@@ -18,7 +18,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -61,17 +60,14 @@ public class InventoryClickE implements Listener {
 					}
 				}
 			} else if (e.getCurrentItem().getType() == Material.WRITTEN_BOOK) {
-				BookMeta meta = (BookMeta) e.getCurrentItem().getItemMeta();
-				if (meta.getDisplayName().contains("Hilfemenü-Erklärung!")) {
-					if (e.getClick().isLeftClick()) {
-						Player p = (Player) e.getWhoClicked();
-						ItemStack book = null;
-						p.getInventory().addItem(HelpBook.loadBook(book));
-						e.setCancelled(true);
-					} else {
-						e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
-						e.setCancelled(true);
-					}
+				if (e.getClick().isLeftClick()) {
+					Player p = (Player) e.getWhoClicked();
+					ItemStack book = null;
+					p.getInventory().addItem(HelpBook.loadBook(book));
+					e.setCancelled(true);
+				} else {
+					e.getWhoClicked().sendMessage("§cNur Linksklick erlaubt!");
+					e.setCancelled(true);
 				}
 			} else if (e.getCurrentItem().getType() == Material.GOLDEN_APPLE) {
 				ItemMeta meta = e.getCurrentItem().getItemMeta();
