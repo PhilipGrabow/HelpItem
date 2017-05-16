@@ -1,6 +1,7 @@
 name: HelpItem
 version: 0.1.8
 author: PhilipGrabow
+softdepend: [PermissionsEx]
 
 main: de.philipgrabow.helpitem.Main
 

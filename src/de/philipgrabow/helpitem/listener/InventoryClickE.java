@@ -446,6 +446,7 @@ public class InventoryClickE implements Listener {
 					}
 				}
 			}
+			e.setCancelled(true);
 		}
 	}
 }

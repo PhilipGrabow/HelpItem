@@ -9,6 +9,7 @@ import de.philipgrabow.helpitem.executor.ItemCreate;
 import de.philipgrabow.helpitem.listener.InteractE;
 import de.philipgrabow.helpitem.listener.InventoryClickE;
 import de.philipgrabow.helpitem.listener.PlayerJoinE;
+import de.philipgrabow.helpitem.listener.PlayerQuitE;
 
 public class Main extends JavaPlugin {
 
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new PlayerJoinE(), this);
 		pm.registerEvents(new InteractE(this), this);
 		pm.registerEvents(new InventoryClickE(), this);
+		pm.registerEvents(new PlayerQuitE(), this);
 	}
 	
 	

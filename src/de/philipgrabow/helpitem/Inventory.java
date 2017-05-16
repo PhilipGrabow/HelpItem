@@ -31,6 +31,62 @@ public class Inventory {
 		ItemStack paper = Inventory.infoblatt();
 		ItemStack steve = Inventory.skull1();
 		ItemStack steve2 = Inventory.skull2();
+		
+		inv.setItem(0, dayclock);
+		inv.setItem(1, nightclock);
+		inv.setItem(2, redglasspane());
+		inv.setItem(3, redglasspane());
+		inv.setItem(4, redglasspane());
+		inv.setItem(5, redglasspane());
+		inv.setItem(6, redglasspane());
+		inv.setItem(7, redglasspane());
+		inv.setItem(8, book);
+		inv.setItem(9, goldenapple);
+		inv.setItem(10, goldencarrot);
+		inv.setItem(11, redglasspane());
+		inv.setItem(12, tnt);
+		inv.setItem(13, redglasspane());
+		inv.setItem(14, redglasspane());
+		inv.setItem(15, redglasspane());
+		inv.setItem(16, redglasspane());
+		inv.setItem(17, redglasspane());
+		inv.setItem(18, redglasspane());
+		inv.setItem(19, redglasspane());
+		inv.setItem(20, redglasspane());
+		inv.setItem(21, redglasspane());
+		inv.setItem(22, redglasspane());
+		inv.setItem(23, redglasspane());
+		inv.setItem(24, redglasspane());
+		inv.setItem(25, redglasspane());
+		inv.setItem(26, redglasspane());
+		inv.setItem(27, redglasspane());
+		inv.setItem(28, redglasspane());
+		inv.setItem(29, redglasspane());
+		inv.setItem(30, redglasspane());
+		inv.setItem(31, redglasspane());
+		inv.setItem(32, redglasspane());
+		inv.setItem(33, redglasspane());
+		inv.setItem(34, redglasspane());
+		inv.setItem(35, redglasspane());
+		inv.setItem(36, redglasspane());
+		inv.setItem(37, redglasspane());
+		inv.setItem(38, redglasspane());
+		inv.setItem(39, redglasspane());
+		inv.setItem(40, redglasspane());
+		inv.setItem(41, redglasspane());
+		inv.setItem(42, redglasspane());
+		inv.setItem(43, redglasspane());
+		inv.setItem(44, redglasspane());
+		inv.setItem(45, steve);
+		inv.setItem(46, steve2);
+		inv.setItem(47, redglasspane());
+		inv.setItem(48, redglasspane());
+		inv.setItem(49, redglasspane());
+		inv.setItem(50, redglasspane());
+		inv.setItem(51, redglasspane());
+		inv.setItem(52, redglasspane());
+		inv.setItem(53, paper);
+		
 		// Player-MENÜ
 		// ///////////////////////////////////////////////////////////////////////////////////
 		int slot = 27;//Anfangsslot
@@ -48,17 +104,15 @@ public class Inventory {
 			slot++;
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////
-		inv.setItem(0, dayclock);
-		inv.setItem(1, nightclock);
-		inv.setItem(8, book);
-		inv.setItem(9, goldenapple);
-		inv.setItem(10, goldencarrot);
-		inv.setItem(12, tnt);
-		inv.setItem(53, paper);
-		inv.setItem(45, steve);
-		inv.setItem(46, steve2);
+		
 	}
-
+	public static ItemStack redglasspane() {
+		ItemStack redglass = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 14);
+		ItemMeta meta = redglass.getItemMeta();
+		meta.setDisplayName(ChatColor.RED + "Keine Funktion!");
+		redglass.setItemMeta(meta);
+		return redglass;
+	}
 	public static ItemStack GoldenApple() {
 		ItemStack goldenapple = new ItemStack(Material.GOLDEN_APPLE);
 		ItemMeta metaapple = goldenapple.getItemMeta();
